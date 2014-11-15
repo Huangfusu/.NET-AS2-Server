@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Defaults>
+<as2From>Simulator</as2From>
+<companyEmail>as2@simulator.com</companyEmail>
+<as2To>Intel</as2To>
+<sendURL>http://vmsbab2b01.amr.corp.intel.com:5200/as2|http://vmsbab2b01.amr.corp.intel.com:5201/as2|http://vmsbab2b02.amr.corp.intel.com:5200/as2|http://vmsbab2b02.amr.corp.intel.com:5201/as2</sendURL>
+<maxFolder></maxFolder>
+<avgFolder>C:\Users\rmd\Documents\Sterling Documents\Sample\newFile</avgFolder>
+<minFolder></minFolder>
+<assemblyPath>Intel.SBI.Benchmarking.Utilities.Utilities,Intel.SBI.Benchmarking.Utilities,Version=1.0.0.0,culture=neutral,PublicKeyToken=640f23c73a5fa6e3</assemblyPath>
+<connectionString>Data Source=FETOOLSPOC;Initial Catalog=EMSPOC;User ID=EMS_READER;Password=Intel!123</connectionString>
+</Defaults>
+

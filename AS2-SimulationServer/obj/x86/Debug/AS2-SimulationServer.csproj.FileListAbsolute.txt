@@ -1,0 +1,11 @@
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\bin\Debug\AS2-SimulationServer.exe.config
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\bin\Debug\AS2-SimulationServer.exe
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\bin\Debug\AS2-SimulationServer.pdb
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\bin\Debug\IUtilities.dll
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\obj\x86\Debug\AS2_SimulationServer.Properties.Resources.resources
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\obj\x86\Debug\AS2_SimulationServer.SettingsForm.resources
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\obj\x86\Debug\AS2-SimulationServer.exe
+C:\Users\rmd\Documents\Visual Studio 2010\Projects\AS2TestHarness\AS2-SimulationServer\obj\x86\Debug\AS2-SimulationServer.pdb

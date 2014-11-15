@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2007-2012, Kaazing Corporation. All rights reserved.
+
+-->
+
+<gateway-config xmlns="http://xmlns.kaazing.com/2012/08/gateway">
+
+
+  <!--
+  #############################################################################
+  #############################################################################
+   TIBCO Web Messaging for TIBCO Enterprise Message Service™ Configuration File
+
+  This configuration file identifies all the possible services and associated
+  security and management that flow through TIBCO Web Messaging for TIBCO
+  Enterprise Message Service™.
+
+  Refer to the "Getting Started" document for basic configuration information.
+  Search the documentation for "Configuration Element Index" for a detailed
+  list and link to a description of each element in this configuration file.
+
+  #############################################################################
+  #############################################################################
+  -->
+
+  <!--
+  Property defaults
+
+  Specify the default values for properties which will be substituted when
+  the Gateway starts. You can replace any values in this configuration file
+  with a property using dollar-sign and curly brace format demonstrated in
+  the <accept> tag of the echo service below. Starting the Gateway replaces
+  all instances of property-name with the value you specify in this section.
+
+  You can supersede property default values by using an environment variable
+  when starting the Gateway. See the "Configure TIBCO Web Messaging for
+  TIBCO Enterprise Message Service™ Using the GATEWAY_OPTS Environment Variable"
+  document for more information.
+  -->
+  <properties>
+  <property>
+		<name>gateway.hostname</name>
+		<value>10.2.73.174</value>
+	</property>
+	<property>
+			<name>gateway.local</name>
+			<value>localhost</value>
+	</property>   
+    <property>
+      <name>gateway.base.port</name>
+      <value>8000</value>
+    </property>
+	<property>
+      <name>gateway.base.sslport</name>
+      <value>8002</value>
+    </property>
+
+    <property>
+      <name>gateway.extras.port</name>
+      <value>8001</value>
+    </property>
+  </properties>
+
+  <!--
+  Echo service
+  The echo service is a service that receives a string of characters
+  through a WebSocket and returns the same characters to the sender.
+  The service "echoes" any input. This service is primarily used
+  for validating the basic Gateway configuration.
+  The echo service runs a separate port to verify cross-origin access.
+  -->
+
+  <service>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/echo</accept>
+
+    <type>echo</type>
+
+
+    <!--
+    You can set accept options at the service level or at the service defaults level.
+    Setting options at the service level overrides options you set at the service
+    defaults level.
+
+    See the Service Defaults block of this configuration file for information on the
+    accept options you can set.
+
+    For example, you can set accept options for binding WebSocket (ws) and WebSocket
+    secure (wss) to different ports on the Gateway host. You can only bind protocols for
+    addresses present in the service's accept strings. If you try to bind a
+    protocol for an address that does not exist in the service's accept strings,
+    the bindings will have no effect.
+    -->
+
+    <!--
+    <accept-options>
+      <ws.bind>80</ws.bind>
+      <wss.bind>443</wss.bind>
+    </accept-options>
+    -->
+
+    <!--
+    Use this security realm when authenticating users.  See the Security block of this
+    configuration file for information on realm configuration.
+    -->
+    <realm-name>demo</realm-name>
+
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+
+  <!--
+  Directory service
+  The directory service is a service that exposes a directory of files.
+  It is used to host static files accessed via the embedded web server within
+  the Gateway. For example, the 'home' page and
+  all of the developer and administration documentation in the
+  Gateway distribution are accessed through this service.
+
+  The <directory> tag specifies the path of your static files relative
+  to GATEWAY_HOME/web, where GATEWAY_HOME is the directory where you
+  installed the Gateway.
+  Note: An absolute path cannot be specified.
+  -->
+
+  <service>
+    <accept>http://${gateway.hostname}:${gateway.base.port}/</accept>
+
+    <type>directory</type>
+    <properties>
+      <directory>/base</directory>
+      <welcome-file>index.html</welcome-file>
+      <error-pages-directory>/error-pages</error-pages-directory>
+      <options>indexes</options>
+    </properties>
+
+    <realm-name>demo</realm-name>
+
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+
+  <service>
+    <accept>http://${gateway.hostname}:${gateway.extras.port}/</accept>
+    <type>directory</type>
+    <properties>
+      <directory>/extras</directory>
+      <welcome-file>index.html</welcome-file>
+      <options>indexes</options>
+    </properties>
+
+    <realm-name>demo</realm-name>
+
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+<!-- I added this -->
+
+<service>
+    <accept>https://${gateway.hostname}:${gateway.base.sslport}/</accept>
+
+    <type>directory</type>
+    <properties>
+      <directory>/base</directory>
+      <welcome-file>index.html</welcome-file>
+      <error-pages-directory>/error-pages</error-pages-directory>
+      <options>indexes</options>
+    </properties>
+
+    <realm-name>demo</realm-name>
+
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+
+  <service>
+    <accept>https://${gateway.hostname}:${gateway.extras.sslport}/</accept>
+    <type>directory</type>
+    <properties>
+      <directory>/extras</directory>
+      <welcome-file>index.html</welcome-file>
+      <options>indexes</options>
+    </properties>
+
+    <realm-name>demo</realm-name>
+
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+
+<!-- till here -->
+  <!--
+  #############################################################################
+  #############################################################################
+                       Security configuration
+  #############################################################################
+  #############################################################################
+  -->
+  <!-- Security configuration -->
+  <security>
+    <!--
+    The keystore element is used to configure the keystore that contains
+    encryption keys for secure communications with the TIBCO Web Messaging for
+    TIBCO Enterprise Message Service™.
+    -->
+    <keystore>
+      <type>JCEKS</type>
+      <file>keystore.db</file>
+      <password-file>keystore.pw</password-file>
+    </keystore>
+
+    <!--
+    The truststore element is used to configure the truststore that
+    contains digital certificates for certificate authorities
+    trusted by the Gateway.
+    -->
+    <truststore>
+      <file>truststore.db</file>
+    </truststore>
+
+    <!--
+    This is the element that associates an authenticated user with a set
+    of authorized roles.
+    -->
+    <realm>
+      <name>demo</name>
+      <description>TIBCO Web Messaging for TIBCO Enterprise Message Service™ Demo</description>
+
+      <!--
+      This is the element that specifies how authentication of users
+      is undertaken for the realm.
+      -->
+      <authentication>
+
+        <!--
+        Specifies how the gateway issues HTTP challenges when
+        unauthorized connections are made. Standard HTTP "Basic"
+        and "Negotiate" are supported, with the Application variants:
+        "Application Basic", and "Application Negotiate".  For custom
+        HTTP challenge schemes, use "Application Token".
+        -->
+        <http-challenge-scheme>Application Basic</http-challenge-scheme>
+
+        <!--
+        The http items below specify how the gateway accepts credentials
+        when connections are made.  In addition to the standard HTTP
+        "Authorization" header, the Gateway can access credentials sent in
+        custom HTTP headers, query parameters and cookies.
+        -->
+
+        <!--
+        <http-header>Custom-Header-Name</http-header>
+        <http-query-parameter>Query-Parameter-Name</http-query-parameter>
+        <http-cookie>Cookie-Name</http-cookie>
+        -->
+
+        <!--
+        The period of time for which authorized connections
+        remain valid without re-authorizing.
+        -->
+        <authorization-timeout>1800</authorization-timeout>
+
+        <!--
+        The login modules below specify how the gateway communicates
+        with a "user database" to validate user credentials, and
+        to determine a set of authorized roles.
+        -->
+        <login-modules>
+          <!--
+          The login module communicates with a user database to
+          validate user's credentials and to determine a set of
+          authorized roles. By default, the file-based module is used.
+          -->
+          <login-module>
+            <type>file</type>
+            <success>required</success>
+            <options>
+              <file>jaas-config.xml</file>
+            </options>
+          </login-module>
+
+          <!--
+          The following is an example of an LDAP-based login-module element:
+          -->
+          <!--
+          <login-module>
+            <type>ldap</type>
+            <success>required</success>
+            <options>
+              <userProvider>ldap://ldap-svr/ou=people,dc=example,dc=com</userProvider>
+              <userFilter>(&amp;(uid={USERNAME})(objectClass=inetOrgPerson))</userFilter>
+              <authzIdentity>{EMPLOYEENUMBER}</authzIdentity>
+            </options>
+          </login-module>
+          -->
+
+          <!--
+          TIBCO Web Messaging for TIBCO Enterprise Message Service™ also supports a plugin
+          mechanism for integration with custom authentication modules based on the Java
+          LoginModule API.
+
+          To use a custom authentication module, configure your login-module element
+          as follows:
+          -->
+          <!--
+          <login-module>
+            <type>class:fully-qualified-class-name</type>
+            <success>required</success>
+            <options>
+              .
+              .
+              .
+            </options>
+          </login-module>
+          -->
+        </login-modules>
+      </authentication>
+    </realm>
+  </security>
+
+  <!--
+  #############################################################################
+  #############################################################################
+                       Additional service configuration
+
+  Note: Proxy services are designed to proxy connections to back-end service.
+  #############################################################################
+  #############################################################################
+  -->
+
+  <!--
+  stomp.jms service
+  See the Administration with TIBCO Web Messaging for TIBCO Enterprise Message Service™ topics
+  for information about the stomp.jms service.
+
+  Note: When JMS security settings are specified, they take precedence over
+  any browser-supplied credentials.
+  Additional properties can be specified. Refer to the field summary in
+  http://download.oracle.com/javase/6/docs/api/javax/naming/Context.html for a
+  complete list.
+  TIBCO Web Messaging for TIBCO Enterprise Message Service™ does not enforce any of
+  these property values; it just passes them to the JMS API.
+
+  To use another JMS implementation, copy the implementation's jar file to
+  the GATEWAY_HOME/lib directory and specify the name of the class as the
+  value for the java.naming.factory.initial property.
+
+  -->
+  <service>
+    <accept>ws://${gateway.hostname}:${gateway.extras.port}/jms</accept>
+
+    <!--
+    See the documentation topic "Checklist: Deploy APNS with TIBCO Web Messaging for TIBCO Enterprise
+    Message Service™" for more detail. Alternatively, search the documentation for "APNS" to find more
+    examples and configuration properties you can set.
+    -->
+    <!--
+    <notify>apns://com.example.MyApp</notify>
+    -->
+
+    <type>stomp.jms</type>
+
+    <properties>
+      <connection.factory.name>TWMGenericConnectionFactory</connection.factory.name>
+      <context.lookup.topic.format>%s</context.lookup.topic.format>
+      <context.lookup.queue.format>%s</context.lookup.queue.format>
+	  
+	  <connection.security.principal>sys_emsdev</connection.security.principal>
+	  <connection.security.credentials>1Adapter!</connection.security.credentials>
+	  <env.java.naming.security.principal>sys_emsdev</env.java.naming.security.principal>
+	  <env.java.naming.security.credentials>1Adapter!</env.java.naming.security.credentials>
+
+      <env.java.naming.factory.initial>com.tibco.tibjms.naming.TibjmsInitialContextFactory</env.java.naming.factory.initial>
+      <env.java.naming.provider.url>tcp://devems1.intel.com:7222</env.java.naming.provider.url>
+      <destination.strategy>session</destination.strategy>
+    </properties>
+
+    <!--
+    See the documentation topic "Checklist: Deploy APNS with TIBCO Web Messaging for TIBCO Enterprise
+    Message Service™" for more detail. Alternatively, search the documentation for "APNS" to find more
+    examples and configuration properties you can set.
+    -->
+
+    <!--
+    <notify-options>
+      <apns.notify.transport>ssl://gateway.push.apple.com:2195</apns.notify.transport>
+      <apns.feedback.transport>ssl://feedback.push.apple.com:2196</apns.notify.transport>
+    </notify-options>
+    -->
+
+    <realm-name>demo</realm-name>
+
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+
+    <cross-site-constraint>
+      <allow-origin>*</allow-origin>
+    </cross-site-constraint>
+  </service>
+
+  <!--
+  Session service
+  This type of service is used to prevent sessions from timing out.
+  Refer to the Security with TIBCO Web Messaging for TIBCO Enterprise Message Service™ topics
+  for more information.
+
+  Note: Communication with the session service should be always be
+  configured to use HTTPS. For demonstration purposes, this example
+  does not use HTTPS because the demo server lacks a certificate.
+  -->
+  <service>
+    <accept>http://${gateway.hostname}:${gateway.extras.port}/session</accept>
+
+    <type>session</type>
+
+    <realm-name>demo</realm-name>
+
+    <!--
+    <authorization-constraint>
+      <require-role>AUTHORIZED</require-role>
+    </authorization-constraint>
+    -->
+  </service>
+
+
+  <!--
+  #############################################################################
+  #############################################################################
+                             Service Defaults
+  #############################################################################
+  #############################################################################
+  -->
+
+  <!--
+  The accept element in a service is frequently sufficient for the service to
+  receive messages and requests. However, sometimes the value of the accept
+  element does not match the physical description of the host. For example, the
+  Gateway may be behind a load balancer or in a cloud environment, in which case
+  its local network information may not match the settings specified by the
+  accept element.
+
+  For instance, your service may accept on ws://www.example.com but that
+  hostname resolves to the IP address of the load balancer, not the Gateway
+  host. In such a case, you can configure the Gateway using the {protocol}.bind
+  element, which enables you to bind the address specified in the accept element
+  to an internal address (where the address maps in your network). This option
+  provides a choice of binding the address to a specific port or hostname and
+  port (if you specify a hostname here, you must specify a port).
+
+  See the topic "Integrating TIBCO Web Messaging for TIBCO Enterprise Message
+  Service™"" into an Internal Network for more information.
+
+  You can configure default values that apply to all services. Elements and
+  values you specify in individual services override the defaults you specify
+  in this section. The following list shows the service configurations
+  you can specify in this section:
+
+    * Accept Options
+
+      - SSL Encryption
+        The SSL encryption can be in one of two forms:
+
+          <ssl.encryption>enabled</ssl.encryption>
+        or
+          <ssl.encryption>disabled</ssl.encryption>
+
+        The default is <ssl.encryption>enabled</ssl.encryption> so does not need to be
+        explicitly set if there is no ssl.encryption specified.
+
+      - Protocol binds
+        These are in the form:
+
+        <{protocol}.bind>[hostname:]port</{protocol}.bind>
+
+        {protocol} is one of ws, wss, http, https, ssl, or tcp. In the value,
+        hostname is optional, but port is required. If a hostname (or IP
+        address) is not specified, then the Gateway will bind to the wildcard
+        address (0.0.0.0) using the given port. Binding to the wildcard address
+        means the Gateway will listen on all interfaces of the host.
+
+        If there are multiple accepts on a service, each using different
+        protocols, then each protocol that needs to be bound must be explicitly
+        bound. For example:
+
+        <service>
+          <accept>http://192.168.10.25:8000/echo</accept>
+          <accept>ws://192.168.10.25:8001/echo</accept>
+          <accept-options>
+            <http.bind>80</http.bind>
+            <ws.bind>443</ws.bind>
+          </accept-options>
+        </service>
+
+     - Maximum WebSocket message size
+        By default, the maximum size of data permitted in an incoming WebSocket
+        frame is 128 kilobytes. You can change the maximum incoming data size over
+        ws and wss by setting the following accept-option:
+
+        <ws.maximum.message.size>64k</ws.maximum.message.size>
+
+      - HTTP(S) keep-alive timeout
+        This is the number of seconds the Gateway will wait for a subsequent request
+        on an HTTP or HTTPS connection before closing the connection to conserve
+        resources. The default value is 30 seconds. You can change this value by setting
+        the following accept-option (see the documentation for more information):
+
+        <http.keepalive.timeout>120</http.keepalive.timeout>
+
+      An example for setting service defaults (turning SSL encryption off, binding each
+      protocol, reducing the limit for incoming WebSocket frame size and increasing the
+      timeout for HTTP connections) is as follows. Note that in this example both ws
+      and http are bound to port 80. This works because they are compatible protocols.
+      Similarly, wss and https can both be bound to the same port because they are
+      compatible protocols. However, if you try to bind incompatible protocols to the
+      same port, you will receive a port conflict error on Gateway startup. For instance,
+      you cannot bind ws and https to the same port.
+
+      <service-defaults>
+        <accept-options>
+          <ssl.encryption>disabled</ssl.encryption>
+          <ws.bind>80</ws.bind>
+          <wss.bind>192.168.10.25:443</wss.bind>
+          <http.bind>192.168.10.25:80</http.bind>
+          <https.bind>192.168.10.25:443</https.bind>
+          <tcp.bind>192.168.10.25:8075</tcp.bind>
+          <ws.maximum.message.size>32k</ws.maximum.message.size>
+          <http.keepalive.timeout>60</http.keepalive.timeout>
+        </accept-options>
+      </service-defaults>
+
+    * MIME-type Mappings
+
+      A service can return files of various types to a client.  Generally, HTTP
+      mandates that a response containing a file also specify a Content-Type
+      header describing the file contents.  You may use a <mime-mapping> tag to specify
+      the Content-Type value to be returned for files with a particular name extension.
+      For example,
+
+      <mime-mapping>
+        <extension>png</extension>
+        <mime-type>image/png</mime-type>
+      </mime-mapping>
+      <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+      </mime-mapping>
+
+      indicates that for files with names ending in '.png', the header
+      'Content-Type: image/png' should be returned by the Gateway, and 'Content-Type: text/html'
+      should be returned for .html files. Mappings can be specified in the both the
+      <service-defaults> block and in any <service> blocks.  If a mapping for a given extension
+      is specified in both the <service-defaults> block and a <service> block, the <service>-level
+      mapping will be used when providing files from that service.
+
+      An initial set of mappings is provided in <service-defaults> below, and should be edited
+      as needed, but not removed. If specified in <service-defaults>, all <mime-mapping> blocks
+      must come after any <accept-options>. If specified in <service>, all <mime-mapping> blocks
+      must come just before any <cross-site-constraint> blocks.
+  -->
+  <service-defaults>
+    <mime-mapping>
+      <extension>html</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>htm</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>js</extension>
+      <mime-type>text/javascript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>png</extension>
+      <mime-type>image/png</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>gif</extension>
+      <mime-type>image/gif</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jpg</extension>
+      <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jpeg</extension>
+      <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>css</extension>
+      <mime-type>text/css</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>swf</extension>
+      <mime-type>application/x-shockwave-flash</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>xap</extension>
+      <mime-type>application/x-silverlight-app</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>htc</extension>
+      <mime-type>text/x-component</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>jnlp</extension>
+      <mime-type>application/x-java-jnlp-file</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>manifest</extension>
+      <mime-type>text/cache-manifest</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>appcache</extension>
+      <mime-type>text/cache-manifest</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>vtt</extension>
+      <mime-type>text/vtt</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>aspx</extension>
+      <mime-type>text/html</mime-type>
+    </mime-mapping>
+  </service-defaults>
+
+  <!--
+  #############################################################################
+  #############################################################################
+                       Management configuration
+  #############################################################################
+  #############################################################################
+  -->
+
+  <!--
+  Gateway management configuration
+  Refer to the topics "How to Configure Security with TIBCO Web Messaging for TIBCO
+  Enterprise Message Service™" and "Checklist: Manage TIBCO Web Messaging for TIBCO
+  Enterprise Message Service™"" for more information.
+  -->
+  <management>
+    <!-- specify protocol, network interface (possibly internal) and port -->
+    <accept>jmx://${gateway.hostname}:2020/</accept>
+    <!-- secure the management using a security realm -->
+    <realm-name>demo</realm-name>
+    <!-- configure the authorized user roles -->
+    <authorization-constraint>
+      <require-role>ADMINISTRATOR</require-role>
+    </authorization-constraint>
+  </management>
+
+  <!--
+  #############################################################################
+  #############################################################################
+                         Network Address Mapping
+  #############################################################################
+  #############################################################################
+  -->
+
+  <!--
+  Note: Network address mapping is deprecated in favor of using protocol binds.
+        See the document "Integrate TIBCO Web Messaging for TIBCO Enterprise Message
+        Service™ into an Internal Network" for more information.
+
+  When a firewall or load-balancing router front-ends TIBCO Web Messaging for
+  TIBCO Enterprise Message Service™, DNS resolves to the public IP address of
+  that device.
+
+  Administrators should configure this device to forward network requests
+  to the TIBCO Web Messaging for TIBCO Enterprise Message Service™ located
+  on the internal network. In this arrangement, you need to configure TIBCO Web
+  Messaging for TIBCO Enterprise Message Service™ and override its default behavior
+  by using the <network> tag and its <address-mapping> child element tag.
+
+  For example, you can map the internal address gateway.dmz.net:8000 to the
+  external address of a firewall at www.example.com:80 as follows:
+
+    <network>
+      <address-mapping>
+        <internal-address>gateway.dmz.net:8000</internal-address>
+        <external-address>www.example.com:80</external-address>
+      </address-mapping>
+    </network>
+
+  This signals TIBCO Web Messaging for TIBCO Enterprise Message Service™ to listen
+  on the internal address gateway.dmz.net:8000 to serve requests originally sent
+  to the external address www.example.com:80. Alternatively, the IP address can be
+  used in the configuration parameters as shown in the following example
+  (you can also specify an IP address and port for the external address).
+
+    <network>
+      <address-mapping>
+        <internal-address>192.168.0.1:8000</internal-address>
+        <external-address>www.example.com:80</external-address>
+      </address-mapping>
+    </network>
+  -->
+
+  <!--
+  #############################################################################
+  #############################################################################
+                            Do not remove closing element
+  #############################################################################
+  #############################################################################
+  -->
+
+</gateway-config>
+

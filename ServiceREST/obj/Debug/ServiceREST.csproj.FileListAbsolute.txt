@@ -1,0 +1,5 @@
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\ServiceREST\bin\ServiceREST.dll
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\ServiceREST\bin\ServiceREST.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\ServiceREST\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\ServiceREST\obj\Debug\ServiceREST.dll
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\ServiceREST\obj\Debug\ServiceREST.pdb

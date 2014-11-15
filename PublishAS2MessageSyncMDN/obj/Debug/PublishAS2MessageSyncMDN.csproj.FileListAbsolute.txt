@@ -1,0 +1,5 @@
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\PublishAS2MessageSyncMDN\bin\Debug\PublishAS2MessageSyncMDN.dll
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\PublishAS2MessageSyncMDN\bin\Debug\PublishAS2MessageSyncMDN.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\PublishAS2MessageSyncMDN\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\PublishAS2MessageSyncMDN\obj\Debug\PublishAS2MessageSyncMDN.dll
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\PublishAS2MessageSyncMDN\obj\Debug\PublishAS2MessageSyncMDN.pdb

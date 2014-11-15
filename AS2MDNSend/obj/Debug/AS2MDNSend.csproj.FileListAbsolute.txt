@@ -1,0 +1,5 @@
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2MDNSend\bin\Debug\AS2MDNSend.dll
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2MDNSend\bin\Debug\AS2MDNSend.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2MDNSend\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2MDNSend\obj\Debug\AS2MDNSend.dll
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2MDNSend\obj\Debug\AS2MDNSend.pdb

@@ -1,0 +1,8 @@
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\bin\Release\SelfHostedWCF.exe.config
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\bin\Release\SelfHostedWCF.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\bin\Release\SelfHostedWCF.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\bin\Release\AS2MDNSend.dll
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\bin\Release\AS2MDNSend.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\obj\x86\Release\SelfHostedWCF.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SelfHostedWCF\obj\x86\Release\SelfHostedWCF.pdb

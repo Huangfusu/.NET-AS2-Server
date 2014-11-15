@@ -1,0 +1,5 @@
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SingleProcess\bin\Release\SingleProcess.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SingleProcess\bin\Release\SingleProcess.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SingleProcess\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SingleProcess\obj\x86\Release\SingleProcess.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\SingleProcess\obj\x86\Release\SingleProcess.pdb

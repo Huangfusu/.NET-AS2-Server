@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Defaults>
+<as2From>mycompanyAS2</as2From>
+<companyEmail>as2@company.com</companyEmal>
+<as2To>Intel</as2To>
+<sendURL>http://vmsdasbi02.amr.corp.intel.com:30033/as2</sendURL>
+<maxFolder></maxFolder>
+<avgFolder>C:\Users\rmd\Documents\Sterling Documents\Sample</avgFolder>
+<minFolder></minFolder>
+</Defaults>

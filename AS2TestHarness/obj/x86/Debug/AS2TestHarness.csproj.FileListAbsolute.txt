@@ -1,0 +1,5 @@
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2TestHarness\bin\Debug\AS2TestHarness.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2TestHarness\bin\Debug\AS2TestHarness.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2TestHarness\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2TestHarness\obj\x86\Debug\AS2TestHarness.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\AS2TestHarness\obj\x86\Debug\AS2TestHarness.pdb

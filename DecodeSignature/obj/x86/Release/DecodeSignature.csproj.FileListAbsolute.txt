@@ -1,0 +1,5 @@
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\DecodeSignature\bin\Release\DecodeSignature.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\DecodeSignature\bin\Release\DecodeSignature.pdb
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\DecodeSignature\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\DecodeSignature\obj\x86\Release\DecodeSignature.exe
+C:\Users\rmd\documents\visual studio 2010\Projects\AS2TestHarness\DecodeSignature\obj\x86\Release\DecodeSignature.pdb
